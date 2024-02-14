@@ -1,0 +1,84 @@
+const form=document.querySelector(".form-section");
+const day=document.querySelector(".day");
+const dayError=document.querySelector(".day-error");
+const month=document.querySelector(".month");
+const monthError=document.querySelector(".month-error");
+const year=document.querySelector(".year");
+const yearError=document.querySelector(".year-error");
+
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+
+    const currentYear = new Date().getFullYear();
+// for day
+if(day.value.trim()===""){
+day.parentElement.className="sec error";
+}else if(day.value>31){
+    day.parentElement.className="sec error";
+    dayError.innerHTML="Ivalid day";
+}else if(day.value==0){
+    day.parentElement.className="sec error";
+    dayError.innerHTML="Cannot keep zero";
+}else{
+    day.parentElement.className="sec";
+}
+
+
+// for month
+if(month.value.trim()===""){
+    month.parentElement.className="sec error";
+    }else if(month.value>=12){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Ivalid month";
+    }else if(month.value==0){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Cannot keep zero";
+    }else if(month.value==2 && day.value>=28){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Ivalid";
+        day.parentElement.className="sec error";
+    dayError.innerHTML="Invalid";
+    }
+    else if(month.value==4 && day.value>=30){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Ivalid";
+        day.parentElement.className="sec error";
+    dayError.innerHTML="Invalid";
+    }
+    else if(month.value==6 && day.value>=30){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Ivalid";
+        day.parentElement.className="sec error";
+    dayError.innerHTML="Invalid";
+    }
+    else if(month.value==9 && day.value>=30){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Ivalid";
+        day.parentElement.className="sec error";
+    dayError.innerHTML="Invalid";
+    }
+    else if(month.value==11 && day.value>=30){
+        month.parentElement.className="sec error";
+        monthError.innerHTML="Ivalid";
+        day.parentElement.className="sec error";
+    dayError.innerHTML="Invalid";
+    }
+    else{
+        month.parentElement.className="sec";
+    }
+
+    // for year
+    if (year.value.trim() === "") {
+        year.parentElement.className = "sec error";
+    } else if (parseInt(year.value) > currentYear) {
+        year.parentElement.className = "sec error";
+        yearError.innerHTML = "Year cannot be in the future";
+    } else {
+        year.parentElement.className = "sec";
+    }
+
+
+
+})
+
